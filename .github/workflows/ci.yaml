@@ -10,20 +10,19 @@ jobs:
   validate-and-test:
     runs-on: Ubuntu-22.04
     timeout-minutes: 15
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
 
-steps:
-  - name: Checkout repository code
-    uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 18.x
 
-  - name: Setup Node.js environment
-    uses: actions/setup-node@v4
-    with: 
-      node-version: 18.x
+      - name: Install dependencies
+        run: |
+          cd src
+          npm ci
 
-  - name: Install dependencies
-    run: |
-      cd src
-      npm ci
-
-  - name: Run code validation (Linter)
-    run: make lint
+      - name: Run code validation (Linter)
+        run: make lint
