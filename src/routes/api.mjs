@@ -98,5 +98,3 @@ router.get('/api/monitoringdata', async function (req, res, next) {
 })
 
 export default router
-helloworldfunc(
-console.log(helloworldfunc(smth=zx))
